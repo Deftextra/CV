@@ -1,0 +1,241 @@
+
+\documentclass[paper=a4,fontsize=12pt]{article} % KOMA-article class
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}             %Savingtrees ;-)
+\voffset = -40pt
+\textheight = 700pt	
+                   
+\usepackage{url}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{1pt}}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}	
+	% Vertical space macro
+
+\newcommand{\MyName}[1]{ 
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		 \normalsize \normalfont }
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\text{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\text{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em}  #2 \par}    % Entry value
+
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textbf{#1}}			   % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value	
+		
+\newcommand{\EducationEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		\colorbox{White}{%
+			\parbox{6em}{%
+			\hfill\color{Black}#2}} \par  % Duration
+		\noindent \textbf{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+	
+\newcommand{\WorkEntry}[4]{
+	\noindent \textbf{#1} \hfill      %Jobname
+	\colorbox{White}{%
+		\parbox{6em}{%
+			\hfill\color{Black}#2}} \par  % Duration
+	\noindent \textbf{#3} \par        %Company 
+	\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+	\normalsize \par}	
+
+	
+\newcommand{\Collegey}[3]{
+	\noindent \textbf{#1} \hfill      
+	\colorbox{White}{%
+		\parbox{6em}{%
+			\hfill\color{Black}#2}} \par  % Duration
+	
+	\noindent\hangindent=2em\hangafter=0 \small #3 % Description
+	\normalsize \par}
+
+\usepackage{enumitem}
+	
+	
+
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+\setlist[description]{font=\normalfont\itshape\space}
+
+\MyName{Radwan Suufi}	
+\MySlogan{}
+
+\sepspace
+
+%%% Personal details
+%%% ------------------------------------------------------------
+
+\begin{center}
+ {\large Apartment 513, Apex Lofts, 50 Warwick Street, Birmingham, B12 0BA}
+
+ {\large Email: radwan.suufi@gmail.com \quad  Tel: 07508290668 \quad   GitHub:  \href{https://github.com/Deftextra}{\includegraphics[scale=0.4]{github}} \quad Linkedin:  \href{https://www.linkedin.com/in/radwan-suufi-b81669227/}{\includegraphics[scale=0.05]{linkedin}}}
+
+
+\end{center}
+
+\NewPart{Personal Statement}{ }
+I'm a dedicated software engineer with years of experience in the .NET/azure space and a proven track record of delivering scalable and maintainable solutions to the highest standards. A pragmatic developer solving complex problems under strict time constraints and leading technical decisions, combined with my passion for mentoring junior engineers, positions me as a strategic asset to drive business growth and technological innovation.
+
+
+\sepspace
+
+\NewPart{Core Skills \enspace \textnormal{\normalsize(Full list on request)}}{ }
+\begin{itemize}
+		\itemsep-0.1em 
+		\item C\# ASP.NET, Razor, Blazor, MVC, Web API, Azure.
+           \item Microservices and multi-tenanted architectures.
+\item Devops
+		\item Automation using Bash\&Powershell.
+		\item SQL server, ORM, EF core.
+\item HTML5, CSS, SASS, Bootstrap, Typescript\&Javascript, Angular and other applicable Javascript frameworks.
+		\item Industry aware and technically up to speed with current software development tools
+           \item Good communication skills, both written and verbal.
+          \item Problem solver and versatile developer.
+	\end{itemize} 
+
+\sepspace
+
+	
+
+\NewPart{Employment}{}
+
+\EducationEntry{Edison365}{\textbf{\hspace{-2cm}{May2021-Present}}}{Product developer}{\begin{itemize}
+		\itemsep-0.1em 
+		\item Architecture and developing the .NET back end for the Edison365 solution.
+		\item Mentoring junior developers and leading the development of features.
+		\item Developed and worked with multiple back-end services using azure such as:
+			\begin{itemize}
+                 \item  Service bus
+                  \item Azure functions
+                  \item Cosmos DB (NoSQL)
+                   \item SignalR
+				\item Web apps 
+                    \item Azure AD
+                    \item SQL Server.
+	  	\end{itemize}
+           \item  Developed internal solution from scratch using blazor server, mud blazor library and Microsoft Graph.
+    \item Back-end development and architecture of cloud-based solutions using azure.
+			\begin{itemize}
+                 \item Migrating solutions from monolithic to microservices architecture.
+                 \item  High scalability, high availability systems
+                 \item Security-first approach.
+			\end{itemize}
+\item Prototyping proof of concepts.
+\item Implemented Unit and Integration tests.
+\item  Full software development life cycle which includes:
+ 		\begin{itemize}
+               \item Setting up CI/CD using azure pipelines.
+                \item Creating and configuring new solutions using azure DevOps.  
+                  \item Code review and best practices              
+           \end{itemize}
+\item Mentoring more junior developers.
+
+\end{itemize} }
+
+\EducationEntry{Enable Software}{\textbf{\hspace{-2cm}{March2018-Jan2019}}}{Software Developer}{\begin{itemize}
+		\itemsep-0.1em 
+		\item Developed and modified software modules based on business requirements.
+		\item Designed web applications and maintained content for multiple .NET-based systems
+		\item Participated in creating project plan and release plan
+		\item Developed, upgraded, and maintained advanced financial industry software
+		\item  Implemented and refactored code to follow best coding practices including Test Driven development
+processes TDD, to improve project effectiveness.
+\end{itemize} }
+
+
+\EducationEntry{TopUpholstery}{\textbf{\hspace{-2cm} April2019-May2021}}{Team Leader\&Logistics (business role)}{\begin{itemize}
+		\itemsep-0.1em 
+		\item Promoted to team leader and responsible for ensuring all areas of projects and operations run smoothly.
+		\item Regularly working with excel and large data sets to organize, record and ensure targets are met..
+		\item Visiting key clients to build relationships and identify their key needs.  	
+		\item Developed business by gaining new contracts. For example, I negotiated a contract with a taxi company, expanding the business.  
+		\item Responding to all costumer queries and complaints efficiently.
+	    \item Processing orders and managing time constraints. 
+		\item Overlooking a group of 4 people, where I make sure Health\&Safety standards are met and plan+advice on technical difficulties. 
+	
+	
+
+	\end{itemize} 
+}
+\sepspace
+
+
+
+
+
+
+
+
+
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Education}{}
+
+\EducationEntry{BSc. Mathematics (achieved 2:1)}{\textbf{2012-2016}}{\textbf{University of Birmingham}}{ \begin{itemize}
+\itemsep-0.1em 
+\item Gained knowledge from a wide range of major 
+mathematical fields, including modules in statistics and probability. 
+\item Introductory module in C++ and experience working in Matlab.
+\item Enhanced oral and written communication skills through working in regular small supervised groups; and communicated mathematical results and ideas effectively. 
+\item Final year project, apart from a written document, also required a presentation in front of an audience, which included a session where I answered any questions.
+\
+\end{itemize} }
+\Collegey{Birmingham Metropolitan College \& Solihull College}{\textbf{2009-2012}}{A Levels: Further Mathematics(A*), Mathematics(A), Chemistry(B), Physics(B)}
+\sepspace
+\Collegey{Hodge Hill School}{\textbf{2008-2009}}{6  GCSEs: (A-C), including English and Mathematics.}
+
+\
+
+
+%%% Work experience
+%%% ------------------------------------------------------------
+
+
+%%% Skills
+%%% ------------------------------------------------------------
+
+
+\NewPart{Interests and Activities}{}
+I occasionally spend some time playing video games on my free time with friends. When I'm not behind a screen, I like to stay active and go to the gym, jog and hiking trips. I'm also a member of my local badminton team where I play weekly. Sometimes play five a side on the weekends. 
+
+
+%%% References
+%%% ------------------------------------------------------------
+\NewPart{References}{}
+Available upon request
+\end{document}
