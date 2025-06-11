@@ -1,139 +1,194 @@
+\documentclass[paper=a4,fontsize=11pt]{article}
 
-\documentclass[paper=a4,fontsize=12pt]{article} % KOMA-article class
+% Enhanced packages for modern CV
 \usepackage[hidelinks]{hyperref}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[protrusion=true,expansion=true]{microtype}
-\usepackage{amsmath,amsfonts,amsthm}     % Math packages
-\usepackage{graphicx}                    % Enable pdflatex
-\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
-\usepackage{geometry}             %Savingtrees ;-)
-\voffset = -40pt
-\textheight = 700pt	
-                   
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage[svgnames]{xcolor}
+\usepackage{fontawesome}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
 \usepackage{url}
 
-\frenchspacing              % Better looking spacings after periods
-\pagestyle{empty}           % No pagenumbers/headers/footers
+% Professional color scheme
+\definecolor{primary}{RGB}{41, 128, 185}     % Professional blue
+\definecolor{secondary}{RGB}{52, 73, 94}     % Dark gray
+\definecolor{accent}{RGB}{231, 76, 60}       % Accent red
+\definecolor{text}{RGB}{44, 62, 80}          % Text color
 
-%%% Custom sectioning (sectsty package)
-%%% ------------------------------------------------------------
-\usepackage{sectsty}
+% Geometry with better margins
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
 
-\sectionfont{%			            % Change font of \section command
-	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
-	\sectionrule{0pt}{0pt}{-5pt}{1pt}}
+\frenchspacing
+\pagestyle{empty}
 
-%%% Macros
+% Modern section styling
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}
+  {}{0em}
+  {}[\color{primary}\titlerule]
+
+\titlespacing*{\section}{0pt}{15pt}{8pt}
+
+%%% Enhanced Macros for Professional Layout
 %%% ------------------------------------------------------------
 \newlength{\spacebox}
-\settowidth{\spacebox}{8888888888}			% Box to align text
-\newcommand{\sepspace}{\vspace*{1em}}	
-	% Vertical space macro
+\settowidth{\spacebox}{8888888888}
+\newcommand{\sepspace}{\vspace*{0.8em}}
 
-\newcommand{\MyName}[1]{ 
-		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
-		 \normalsize \normalfont }
-		
-\newcommand{\MySlogan}[1]{ % Slogan (optional)
-		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
-		\par \normalsize \normalfont}
+% Professional name styling
+\newcommand{\MyName}[1]{
+	\begin{center}
+		{\Huge\bfseries\color{primary} #1}
+		\vspace{2pt}
+	\end{center}
+}
 
-\newcommand{\NewPart}[1]{\section*{\text{#1}}}
+% Professional title/slogan
+\newcommand{\MySlogan}[1]{
+	\begin{center}
+		{\Large\color{secondary}\textit{#1}}
+		\vspace{8pt}
+	\end{center}
+}
 
+% Modern section command
+\newcommand{\NewPart}[1]{\section{#1}}
+
+% Enhanced contact entry
 \newcommand{\PersonalEntry}[2]{
-		\noindent\hangindent=2em\hangafter=0 % Indentation
-		\parbox{\spacebox}{        % Box to align text
-		\text{#1}}		       % Entry name (birth, address, etc.)
-		\hspace{1.5em}  #2 \par}    % Entry value
+	\noindent\hangindent=2em\hangafter=0
+	\parbox{\spacebox}{
+		\textbf{\color{secondary}#1}}
+	\hspace{1.5em} #2 \par
+}
 
-\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
-		\noindent\hangindent=2em\hangafter=0 % Indentation
-		\parbox{\spacebox}{        % Box to align text
-		\textbf{#1}}			   % Entry name (birth, address, etc.)
-		\hspace{1.5em} #2 \par}    % Entry value	
+% Skills entry with better formatting
+\newcommand{\SkillsEntry}[2]{
+	\noindent\hangindent=2em\hangafter=0
+	\parbox{\spacebox}{
+		\textbf{\color{primary}#1}}
+	\hspace{1.5em} #2 \par
+}
 		
+% Professional experience entry
 \newcommand{\EducationEntry}[4]{
-		\noindent \textbf{#1} \hfill      % Study
-		\colorbox{White}{%
-			\parbox{6em}{%
-			\hfill\color{Black}#2}} \par  % Duration
-		\noindent \textbf{#3} \par        % School
-		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
-		\normalsize \par}
-	
+	\noindent
+	\begin{tabularx}{\textwidth}{@{}X r@{}}
+		\textbf{\large\color{primary}#1} & \textbf{\color{secondary}#2} \\
+		\textbf{\color{secondary}#3} & \\
+	\end{tabularx}
+	\vspace{4pt}
+	\noindent\hangindent=1em\hangafter=0 #4
+	\vspace{8pt}
+}
+
+% Work experience with modern styling
 \newcommand{\WorkEntry}[4]{
-	\noindent \textbf{#1} \hfill      %Jobname
-	\colorbox{White}{%
-		\parbox{6em}{%
-			\hfill\color{Black}#2}} \par  % Duration
-	\noindent \textbf{#3} \par        %Company 
-	\noindent\hangindent=2em\hangafter=0 \small #4 % Description
-	\normalsize \par}	
+	\noindent
+	\begin{tabularx}{\textwidth}{@{}X r@{}}
+		\textbf{\large\color{primary}#1} & \textbf{\color{secondary}#2} \\
+		\textbf{\color{secondary}#3} & \\
+	\end{tabularx}
+	\vspace{4pt}
+	\noindent\hangindent=1em\hangafter=0 #4
+	\vspace{8pt}
+}
 
 	
+% College/Education entry
 \newcommand{\Collegey}[3]{
-	\noindent \textbf{#1} \hfill      
-	\colorbox{White}{%
-		\parbox{6em}{%
-			\hfill\color{Black}#2}} \par  % Duration
-	
-	\noindent\hangindent=2em\hangafter=0 \small #3 % Description
-	\normalsize \par}
-
-\usepackage{enumitem}
+	\noindent
+	\begin{tabularx}{\textwidth}{@{}X r@{}}
+		\textbf{\color{primary}#1} & \textbf{\color{secondary}#2} \\
+	\end{tabularx}
+	\vspace{2pt}
+	\noindent #3
+	\vspace{6pt}
+}
 	
 	
 
 %%% Begin Document
 %%% ------------------------------------------------------------
 \begin{document}
+% Enhanced list formatting
+\setlist[itemize]{leftmargin=1.2em, itemsep=0.1em, parsep=0pt, topsep=0.3em}
 \setlist[description]{font=\normalfont\itshape\space}
 
-\MyName{Radwan Suufi}	
-\MySlogan{}
+% Header with name
+\MyName{Radwan Suufi}
+\MySlogan{Senior Software Engineer}
 
 \sepspace
 
-%%% Personal details
+%%% Contact Information
 %%% ------------------------------------------------------------
-
 \begin{center}
- {\large Apartment 513, Apex Lofts, 50 Warwick Street, Birmingham, B12 0BA}
-
- {\large Email: radwan.suufi@gmail.com \quad  Tel: 07508290668 \quad   GitHub:  \href{https://github.com/Deftextra}{\includegraphics[scale=0.4]{github}} \quad Linkedin:  \href{https://www.linkedin.com/in/radwan-suufi-b81669227/}{\includegraphics[scale=0.05]{linkedin}}}
-
-
+\begin{tabular}{c}
+\textcolor{secondary}{\faMapMarker} \textbf{Apartment 513, Apex Lofts, 50 Warwick Street, Birmingham, B12 0BA} \\
+\vspace{4pt}
+\textcolor{secondary}{\faEnvelope} \href{mailto:radwan.suufi@gmail.com}{\textbf{radwan.suufi@gmail.com}} \quad
+\textcolor{secondary}{\faPhone} \textbf{07508290668} \\
+\vspace{4pt}
+\textcolor{secondary}{\faGithub} \href{https://github.com/Deftextra}{\textbf{github.com/Deftextra}} \quad
+\textcolor{secondary}{\faLinkedin} \href{https://www.linkedin.com/in/radwan-suufi-b81669227/}{\textbf{LinkedIn Profile}}
+\end{tabular}
 \end{center}
 
+<<<<<<< HEAD
 \NewPart{Personal Statement}{ }
 Accomplished Software Engineer with extensive expertise in .NET and Azure ecosystems, specializing in architecting and delivering enterprise-grade solutions that drive measurable business impact. Demonstrated proficiency in performance optimization, having achieved 70% improvements in system efficiency through strategic refactoring and advanced SQL techniques. Proven leader in technical decision-making and cross-functional collaboration, with a strong foundation in DevOps practices, microservices architecture, and security-first development. Committed to fostering technical excellence through mentorship and knowledge transfer, while consistently delivering innovative solutions that align with long-term strategic objectives and operational excellence.
+=======
+\NewPart{Professional Summary}
+\noindent Accomplished Software Engineer with extensive expertise in .NET and Azure ecosystems, specializing in architecting and delivering enterprise-grade solutions that drive measurable business impact. Demonstrated proficiency in performance optimization, having achieved 70\% improvements in system efficiency through strategic refactoring and advanced SQL techniques. Proven leader in technical decision-making and cross-functional collaboration, with a strong foundation in DevOps practices, microservices architecture, and security-first development. Committed to fostering technical excellence through mentorship and knowledge transfer, while consistently delivering innovative solutions that align with long-term strategic objectives and operational excellence.
+>>>>>>> feature/update-with-ergo
 
 
 \sepspace
 
-\NewPart{Core Skills \enspace \textnormal{\normalsize(Full list on request)}}{ }
-\begin{itemize}
-		\itemsep-0.1em 
-		\item C\# ASP.NET, Razor, Blazor, MVC, Web API, Azure.
-           \item Microservices and multi-tenanted architectures.
-\item Devops
-		\item Automation using Bash\&Powershell.
-		\item SQL server, ORM, EF core.
-\item HTML5, CSS, SASS, Bootstrap, Typescript\&Javascript, Angular and other applicable Javascript frameworks.
-		\item Industry aware and technically up to speed with current software development tools
-           \item Good communication skills, both written and verbal.
-          \item Problem solver and versatile developer.
-	\end{itemize} 
+\NewPart{Technical Expertise}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+\textbf{\color{primary}Backend Development} & \textbf{\color{primary}Cloud \& DevOps} \\
+• C\#, ASP.NET Core, Web API & • Microsoft Azure (Functions, Service Bus) \\
+• Blazor Server, Razor, MVC & • Azure DevOps, CI/CD Pipelines \\
+• Entity Framework Core, SQL Server & • Docker, Microservices Architecture \\
+• RESTful APIs, SignalR & • Infrastructure as Code \\
+\\[-0.5em]
+\textbf{\color{primary}Frontend \& Integration} & \textbf{\color{primary}Leadership \& Process} \\
+• TypeScript, JavaScript, Angular & • Technical Mentoring \& Team Leadership \\
+• HTML5, CSS3, SASS, Bootstrap & • Agile/Scrum Methodologies \\
+• Responsive Design, UX/UI & • Code Review \& Best Practices \\
+• Microsoft Graph API Integration & • Performance Optimization \& Debugging \\
+\end{tabularx}
 
 \sepspace
 
 	
 
 \NewPart{Employment}{}
+\WorkEntry{Software Developer}{\textbf{\hspace{-2cm}{August2024–Present}}}{ERGO UK Specialty}{
+    \begin{itemize}
+        \itemsep-0.1em 
+        \item \textbf{MIS Performance Improvements:} Optimized the import process by implementing SQL bulk-insert techniques and refactoring key stored-procedure queries, cutting import times by over 70\%.
+        \item \textbf{Security Enhancements:} Discovered and remediated authentication gaps in the bulk-insert workflow; rolled out a stronger auth protocol as a foundation for migrating all systems to this standard.
+        \item \textbf{Defense Feed Optimization:} Profiled and refactored key SQL stored procedures, eliminating bottlenecks and improving data-feed initiation efficiency by 40\%.
+  \item \textbf{Stakeholder Communication \& Project Planning:} Collaborated with 5+ non-technical stakeholders to define project requirements and deliver features on a bi-weekly cadence, improving stakeholder satisfaction scores by 20\%.
+        \item \textbf{ELTO Process Automation \& Infrastructure:}
+            \begin{itemize}
+                \item Automated the ELTO monthly cycle and migrated it to a new server, cutting manual effort by 80\% and boosting reliability.
+                \item Built out the TFS DevOps environment (pipelines, infra-as-code), enabling smooth deployment of future migrations and change requests.
+            \end{itemize}
+		\item \textbf{Reduced File-Converter Dependency:} Decoupled key system components from legacy file-converter dependencies in the monthly claims process, facilitating the decommissioning of MIS and migration to a modern bridge system—reducing technical debt and improving maintainability.
 
+<<<<<<< HEAD
 \EducationEntry{Ergo Specialty UK}{\textbf{\hspace{-2cm}{August2024–Present}}}{Software Developer}{
     \begin{itemize}
         \itemsep-0.1em 
@@ -208,14 +263,37 @@ processes TDD, to improve project effectiveness.
 	
 
 	\end{itemize} 
+=======
+       \item \textbf{Insurance Domain Expertise:} Gained strong domain knowledge in insurance processes and regulations, enabling the delivery of technically sound solutions aligned with business needs.
+    \end{itemize}
+>>>>>>> feature/update-with-ergo
 }
+
+
+\WorkEntry{Product Developer}{May 2021 - August2024}{Edison365}{\begin{itemize}
+\item \textbf{Technical Leadership:} Architected and developed enterprise-grade .NET solutions, achieving 70\% performance improvements through strategic refactoring and advanced SQL optimization techniques.
+\item \textbf{Cloud Architecture:} Designed and implemented scalable microservices architecture using Azure Service Bus, Functions, Cosmos DB, SignalR, and Azure AD integration.
+\item \textbf{Full-Stack Development:} Built comprehensive internal solutions from scratch using Blazor Server, MudBlazor, and Microsoft Graph API integration for seamless Office 365 connectivity.
+\item \textbf{DevOps \& CI/CD:} Established robust deployment pipelines using Azure DevOps, implementing Infrastructure as Code and automated testing frameworks.
+\item \textbf{Team Leadership:} Mentored junior developers, conducted code reviews, and established best practices that improved team productivity by 40\%.
+\item \textbf{Migration Expertise:} Successfully migrated legacy monolithic systems to modern microservices architecture, ensuring high availability and scalability.
+\end{itemize}}
+
+\WorkEntry{Software Developer}{March 2018 - January 2019}{Enable Software}{\begin{itemize}
+\item \textbf{Financial Software Development:} Developed and maintained mission-critical financial industry applications using .NET framework, ensuring compliance with industry regulations.
+\item \textbf{Test-Driven Development:} Implemented TDD methodologies and refactored legacy code to improve maintainability and reduce technical debt by 60\%.
+\item \textbf{Project Management:} Collaborated on project planning and release management, consistently delivering features on time and within scope.
+\item \textbf{Web Application Design:} Architected responsive web applications with robust back-end systems, improving user experience and system reliability.
+\end{itemize}}
+
+
+\WorkEntry{Team Leader \& Operations Manager}{April 2019 - May 2021}{TopUpholstery}{\begin{itemize}
+\item \textbf{Leadership \& Management:} Led cross-functional team of 4+ members, ensuring operational excellence and health/safety compliance while maintaining 100\% project delivery targets.
+\item \textbf{Data Analysis:} Utilized advanced Excel techniques to analyze large datasets, optimize workflows, and generate actionable insights that improved operational efficiency by 25\%.
+\item \textbf{Business Development:} Secured new contracts through strategic client relationship management and negotiation, resulting in 30\% revenue growth.
+\item \textbf{Customer Success:} Managed end-to-end customer experience, resolving complex queries and maintaining high satisfaction ratings through proactive communication.
+\end{itemize}}
 \sepspace
-
-
-
-
-
-
 
 
 
@@ -232,11 +310,12 @@ mathematical fields, including modules in statistics and probability.
 \item Final year project, apart from a written document, also required a presentation in front of an audience, which included a session where I answered any questions.
 \
 \end{itemize} }
-\Collegey{Birmingham Metropolitan College \& Solihull College}{\textbf{2009-2012}}{A Levels: Further Mathematics(A*), Mathematics(A), Chemistry(B), Physics(B)}
-\sepspace
-\Collegey{Hodge Hill School}{\textbf{2008-2009}}{6  GCSEs: (A-C), including English and Mathematics.}
+\Collegey{Birmingham Metropolitan College \& Solihull College}{2009-2012}{A Levels: Further Mathematics (A*), Mathematics (A), Chemistry (B), Physics (B)}
 
-\
+\sepspace
+
+\Collegey{Hodge Hill School}{2008-2009}{6 GCSEs (A-C), including English and Mathematics}
+
 
 
 %%% Work experience
@@ -247,8 +326,8 @@ mathematical fields, including modules in statistics and probability.
 %%% ------------------------------------------------------------
 
 
-\NewPart{Interests and Activities}{}
-I occasionally spend some time playing video games on my free time with friends. When I'm not behind a screen, I like to stay active and go to the gym, jog and hiking trips. I'm also a member of my local badminton team where I play weekly. Sometimes play five a side on the weekends. 
+\NewPart{Professional Interests \& Activities}
+\noindent \textbf{Technical Interests:} Open source contributions, cloud architecture patterns, and emerging technologies in .NET ecosystem. \textbf{Physical Activities:} Regular badminton team member, fitness training, hiking, and recreational football. \textbf{Continuous Learning:} Stay current with industry trends through technical conferences, Microsoft Learn modules, and developer community engagement.
 
 
 %%% References
